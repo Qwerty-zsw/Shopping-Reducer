@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { isInCard, quantityCount, shorten } from "../Helper/Splitter";
 import { useContext } from "react";
 import { CardContext } from "../../Context/CardContextProvider";
-import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
+import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 
 const Product = ({ productData }) => {
   const { state, dispatch } = useContext(CardContext);
@@ -41,16 +41,20 @@ const Product = ({ productData }) => {
               }
               variant="primary text-white py-0"
             >
-              <span className="d-flex align-items-center py-1 fw-bold fs-5">+</span>
+              <span className="d-flex align-items-center justify-content-center py-1 fw-bold fs-5">
+                +
+              </span>
             </Button>
           ) : (
             <Button
               onClick={() =>
                 dispatch({ type: "ADD_ITEM", payload: productData })
               }
-              variant="primary w-100 text-white"
+              variant="primary w-100 text-white p-0"
             >
-              Add to card
+              <span className="d-flex align-items-center justify-content-center fw-bold py-2">
+                اضافه کردن به سبد
+              </span>
             </Button>
           )}
           {quantityCount(state, productData.id) > 1 && (
@@ -60,7 +64,9 @@ const Product = ({ productData }) => {
               }
               className="p-0 me-2"
             >
-              <span className="d-flex align-items-center fw-bold fs-5 py-1 px-3">-</span>
+              <span className="d-flex align-items-center justify-content-center fw-bold fs-5 py-1 px-3">
+                -
+              </span>
             </Button>
           )}
           {quantityCount(state, productData.id) === 1 && (
